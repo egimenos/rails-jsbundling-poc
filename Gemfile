@@ -66,3 +66,5 @@ group :test do
 end
 
 gem 'jsbundling-rails'
+
+gem "rodauth-rails", "~> 1.15"

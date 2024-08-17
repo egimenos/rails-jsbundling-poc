@@ -77,7 +77,11 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    after_commit_everywhere (1.4.0)
+      activerecord (>= 4.2)
+      activesupport
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.18.3)
@@ -205,12 +209,33 @@ GEM
     reline (0.5.5)
       io-console (~> 0.5)
     rexml (3.2.6)
+    roda (3.83.0)
+      rack
+    rodauth (2.36.0)
+      roda (>= 2.6.0)
+      sequel (>= 4)
+    rodauth-model (0.2.1)
+      rodauth (~> 2.0)
+    rodauth-rails (1.15.0)
+      bcrypt
+      railties (>= 5.0, < 8)
+      roda (~> 3.76)
+      rodauth (~> 2.36)
+      rodauth-model (~> 0.2)
+      sequel-activerecord_connection (~> 1.1)
+      tilt
     rubyzip (2.3.2)
     selenium-webdriver (4.20.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sequel (5.83.1)
+      bigdecimal
+    sequel-activerecord_connection (1.4.1)
+      activerecord (>= 5.0, < 8)
+      after_commit_everywhere (~> 1.1)
+      sequel (~> 5.38)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -222,6 +247,7 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.0)
     thor (1.3.1)
+    tilt (2.4.0)
     timeout (0.4.1)
     turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
@@ -261,6 +287,7 @@ DEPENDENCIES
   pg
   puma (>= 5.0)
   rails (~> 7.1.3, >= 7.1.3.2)
+  rodauth-rails (~> 1.15)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
