@@ -21,5 +21,9 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> Secondary configurations
     # r.rodauth(:admin) # route admin rodauth requests
+
+     if r.path.start_with?("/posts")
+      rodauth.require_authentication
+    end
   end
 end

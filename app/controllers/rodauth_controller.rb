@@ -1,4 +1,6 @@
 class RodauthController < ApplicationController
+  # quick and dirty to test JSON API requests
+  protect_from_forgery unless: -> { request.format.json? }
   # Used by Rodauth for rendering views, CSRF protection, running any
   # registered action callbacks and rescue handlers, instrumentation etc.
 
