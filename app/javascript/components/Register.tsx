@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getCSRFToken } from '../utils/getCSRFToken';
 
 function Register() {
   const [login, setLogin] = useState('');
@@ -25,7 +26,8 @@ function Register() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        },
+          'X-CSRF-Token': getCSRFToken()
+        } as HeadersInit,
         body: JSON.stringify(data),
       });
 
