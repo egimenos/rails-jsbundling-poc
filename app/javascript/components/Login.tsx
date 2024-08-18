@@ -19,7 +19,7 @@ function Login() {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:3000/login", {
+      const response = await fetch(`${window.location.origin}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function Login() {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit">Login</button>
     </form>
   );
 }
