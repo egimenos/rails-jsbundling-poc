@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-function Register() {
+function Login() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -11,17 +10,15 @@ function Register() {
     interface FormData {
       email: string;
       password: string;
-      'password-confirm': string;
     }
 
     const data: FormData = {
       email: login,
       password,
-      'password-confirm': passwordConfirm,
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:3000/create-account', {
+      const response = await fetch('http://127.0.0.1:3000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,12 +28,12 @@ function Register() {
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Account created:', result);
+        console.log('Login success:', result);
       } else {
-        console.error('Failed to create account:', response.statusText);
+        console.error('Failed to login:', response.statusText);
       }
     } catch (error) {
-      console.error('Error during account creation:', error);
+      console.error('Error during login:', error);
     }
   };
 
@@ -62,19 +59,9 @@ function Register() {
           />
         </label>
       </div>
-      <div>
-        <label>
-          Confirm Password:
-          <input
-            type="password"
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-          />
-        </label>
-      </div>
       <button type="submit">Create Account</button>
     </form>
   );
 }
 
-export default Register;
+export default Login;
