@@ -1,5 +1,7 @@
 # README
 
+Quick and very dirty poc to try react with rails via esbuild and rodauth-rails features.
+
 Dev server
 
 `./bin/dev`
