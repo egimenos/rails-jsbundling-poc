@@ -16,4 +16,6 @@ test:
 
 production:
   <<: *default
-  database: rodauth_poc__production
+  database: rodauth_poc_db
+  url: <%= ENV['DATABASE_URL'] %>
+
