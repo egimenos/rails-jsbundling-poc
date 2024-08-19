@@ -11,27 +11,32 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <% if rodauth.logged_in? %>
-      <div class="dropdown">
-        <button type="button">
-          <%= current_account.email %>
-        </button>
-        <div>
-          <%= link_to "Change password", rodauth.change_password_path, class: "dropdown-item" %>
-          <%= link_to "Change email", rodauth.change_login_path, class: "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to "Close account", rodauth.close_account_path, class: "dropdown-item text-danger" %>
-          <%= link_to "Sign out", rodauth.logout_path, data: { turbo_method: :post }, class: "dropdown-item" %>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <h1 class="existing-css">This comes from Rails .erb</h1>
+    <div class="container mx-auto p-4">
+      <% if rodauth.logged_in? %>
+        <div class="bg-white shadow-lg rounded-lg p-4">
+          <button type="button" class="text-sm font-medium text-gray-700 hover:text-gray-900 focus:outline-none">
+            <%= current_account.email %>
+          </button>
+          <div class="mt-2 space-y-2">
+            <%= link_to "Change password", rodauth.change_password_path, class: "block text-blue-600 hover:underline" %>
+            <%= link_to "Change email", rodauth.change_login_path, class: "block text-blue-600 hover:underline" %>
+            <div class="border-t border-gray-200 my-2"></div>
+            <%= link_to "Close account", rodauth.close_account_path, class: "block text-red-600 hover:underline" %>
+            <%= link_to "Sign out", rodauth.logout_path, data: { turbo_method: :post }, class: "block text-red-600 hover:underline" %>
+          </div>
         </div>
-      </div>
-    <% else %>
-      <div>
-        <%= link_to "Sign in", rodauth.login_path, class: "btn btn-outline-primary" %>
-        <%= link_to "Sign up", rodauth.create_account_path, class: "btn btn-success" %>
-      </div>
-    <% end %>
-    <%= yield %>
+      <% else %>
+        <div class="bg-white shadow-lg rounded-lg p-4 space-x-4">
+          <%= link_to "Sign in", rodauth.login_path, class: "text-blue-600 hover:underline" %>
+          <%= link_to "Sign up", rodauth.create_account_path, class: "text-blue-600 hover:underline" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
   </body>
-</html>
 
+</html>
