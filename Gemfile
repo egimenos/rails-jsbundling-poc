@@ -70,3 +70,6 @@ gem 'jsbundling-rails'
 gem "rodauth-rails", "~> 1.15"
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "rodauth-omniauth", "~> 0.3.4"
+gem "omniauth-google-oauth2", "~> 1.1"

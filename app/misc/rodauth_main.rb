@@ -6,12 +6,18 @@ class RodauthMain < Rodauth::Rails::Auth
     enable :create_account, :verify_account, :verify_account_grace_period,
       :login, :logout, :remember,
       :reset_password, :change_password, :change_login, :verify_login_change,
-      :close_account, :json
+      :close_account, :json, :omniauth
 
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
 
     # ==> General
+    # omnniauth providers configuration
+    omniauth_provider :google_oauth2,
+      Rails.application.credentials.google[:client_id],
+      Rails.application.credentials.google[:client_secret],
+      name: :google # rename it from "google_oauth2"
+
     # Initialize Sequel and have it reuse Active Record's database connection.
     db Sequel.postgres(extensions: :activerecord_connection, keep_reference: false)
     # Avoid DB query that checks accounts table schema at boot time.
