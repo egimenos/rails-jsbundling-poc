@@ -12,6 +12,13 @@
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
+      <div class="container mx-auto px-4">
+      <% flash.each do |key, message| %>
+        <div class="flash-message mb-4 p-4 rounded-lg text-white <%= flash_class(key) %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
     <h1 class="existing-css mx-auto">This comes from Rails .erb</h1>
     <div class="container mx-auto p-4 max-w-md">
       <% if rodauth.logged_in? %>
