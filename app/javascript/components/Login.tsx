@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCSRFToken } from "../utils/getCSRFToken";
+import GoogleButton from "react-google-button";
 
 function Login() {
   const [login, setLogin] = useState("");
@@ -108,6 +109,11 @@ function Login() {
       >
         Google login with manual button
       </a>
+      <GoogleButton
+        onClick={() => {
+          window.location.replace(googleAuthorizeUrl);
+        }}
+      />
     </div>
   );
 }
